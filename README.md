@@ -1,9 +1,9 @@
-# A Pytorch Implementation of Strong-Weak Distribution Alignment for Adaptive Object Detection
+# A Pytorch Implementation of Strong-Weak Distribution Alignment for Adaptive Object Detection (CVPR 2019)
 
 <img src='./docs/swda.png' width=900/>
 
 ## Introduction
-Follow [original repository](https://github.com/jwyang/faster-rcnn.pytorch).
+Follow [original repository](https://github.com/jwyang/faster-rcnn.pytorch)
  to setup the environment. When installing pytorch-faster-rcnn, you may encounter some issues.
 Many issues have been reported there to setup the environment.
 
@@ -75,4 +75,15 @@ Add --lc and --gc when using context-vector based regularization loss.
  CUDA_VISIBLE_DEVICES=$GPU_ID python test_net_global_local.py \
                     --dataset target_dataset --net vgg16 \
                     --cuda --lc --gc --load_name path_to_model
+```
+### Citation
+Please cite the following reference if you utilize this repository for your project.
+
+```
+@article{saito2018strong,
+  title={Strong-Weak Distribution Alignment for Adaptive Object Detection},
+  author={Saito, Kuniaki and Ushiku, Yoshitaka and Harada, Tatsuya and Saenko, Kate},
+  journal={arXiv},
+  year={2018}
+}
 ```
