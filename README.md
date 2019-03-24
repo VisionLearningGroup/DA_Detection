@@ -1,10 +1,12 @@
 # A Pytorch Implementation of Strong-Weak Distribution Alignment for Adaptive Object Detection
 
 <img src='./docs/swda.png' width=900/>
+
 ## Introduction
 Follow [original repository](https://github.com/jwyang/faster-rcnn.pytorch).
  to setup the environment. When installing pytorch-faster-rcnn, you may encounter some issues.
 Many issues have been reported there to setup the environment.
+
 ### Data Preparation
 
 * **PASCAL_VOC 07+12**: Please follow the instructions in [py-faster-rcnn](https://github.com/rbgirshick/py-faster-rcnn#beyond-the-demo-installation-for-training-and-testing-models) to prepare VOC datasets. Actually, you can refer to any others. After downloading the data, creat softlinks in the folder data/.
