@@ -293,7 +293,6 @@ class pascal_voc(imdb):
                                 format(index, dets[k, -1],
                                        dets[k, 0] + 1, dets[k, 1] + 1,
                                        dets[k, 2] + 1, dets[k, 3] + 1))
-
     def _do_python_eval(self, output_dir='output'):
         annopath = os.path.join(
             self._devkit_path,

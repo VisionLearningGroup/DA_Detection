@@ -337,12 +337,10 @@ class water(imdb):
     def _do_python_eval(self, output_dir='output'):
         annopath = os.path.join(
             self._devkit_path,
-            'watercolor',
             'Annotations',
             '{:s}.xml')
         imagesetfile = os.path.join(
             self._devkit_path,
-            'watercolor',
             'ImageSets',
             'Main',
             self._image_set + '.txt')

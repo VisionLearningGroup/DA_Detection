@@ -162,9 +162,6 @@ if __name__ == '__main__':
       boxes = rois.data[:, :, 1:5]
       d_pred = d_pred.data
       path = data[4]
-      #print(path)
-      if i < 10:
-          np.save(os.path.join('output/d_map_ep0', path[0].split('/')[-1]), d_pred.cpu().numpy())
 
       if cfg.TEST.BBOX_REG:
           # Apply bounding-box regression deltas

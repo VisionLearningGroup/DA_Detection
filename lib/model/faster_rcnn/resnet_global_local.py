@@ -322,7 +322,6 @@ class resnet(_fasterRCNN):
       print("Loading pretrained weights from %s" %(self.model_path))
       state_dict = torch.load(self.model_path)
       resnet.load_state_dict({k:v for k,v in state_dict.items() if k in resnet.state_dict()})
-    print(resnet.layer2)
     # Build resnet.
     self.RCNN_base1 = nn.Sequential(resnet.conv1, resnet.bn1,resnet.relu,
       resnet.maxpool,resnet.layer1)

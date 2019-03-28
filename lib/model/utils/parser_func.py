@@ -222,7 +222,11 @@ def set_dataset_args(args, test=False):
             args.imdb_name = "cityscape_kitti_val"
             args.imdbval_name = "cityscape_kitti_val"
             args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES', '30']
-
+        elif args.dataset == "water":
+            args.imdb_name = "water_test"
+            args.imdbval_name = "water_test"
+            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
+                                '20']
     args.cfg_file = "cfgs/{}_ls.yml".format(args.net) if args.large_scale else "cfgs/{}.yml".format(args.net)
 
     return args

@@ -76,7 +76,8 @@ Add --lc and --gc when using context-vector based regularization loss.
                     --dataset target_dataset --net vgg16 \
                     --cuda --lc --gc --load_name path_to_model
 ```
-### Citation
+
+## Citation
 Please cite the following reference if you utilize this repository for your project.
 
 ```
