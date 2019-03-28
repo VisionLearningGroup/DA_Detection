@@ -38,13 +38,18 @@ Write your dataset directories' paths in lib/datasets/config_dataset.py.
 
 ### Pretrained Model
 
-We used two pretrained models in our experiments, VGG and ResNet101. You can download these two models from:
+We used two models pre-trained on ImageNet in our experiments, VGG and ResNet101. You can download these two models from:
 
 * VGG16: [Dropbox](https://www.dropbox.com/s/s3brpk0bdq60nyb/vgg16_caffe.pth?dl=0), [VT Server](https://filebox.ece.vt.edu/~jw2yang/faster-rcnn/pretrained-base-models/vgg16_caffe.pth)
 
 * ResNet101: [Dropbox](https://www.dropbox.com/s/iev3tkbz5wyyuz9/resnet101_caffe.pth?dl=0), [VT Server](https://filebox.ece.vt.edu/~jw2yang/faster-rcnn/pretrained-base-models/resnet101_caffe.pth)
 
 Download them and write the path in __C.VGG_PATH and __C.RESNET_PATH at lib/model/utils/config.py.
+
+#### sample model
+Global-local alignment model for watercolor dataset.
+
+* ResNet101 (adapted to water color) [GoogleDrive] (https://drive.google.com/file/d/1pzj2jKFwtGzwjZTeEyeDSnNlPU1MZ4t9/view?usp=sharing)
 
 ## Train
 * With only local alignment loss,
