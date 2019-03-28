@@ -52,6 +52,7 @@ Global-local alignment model for watercolor dataset.
 * ResNet101 (adapted to water color) [GoogleDrive](https://drive.google.com/file/d/1pzj2jKFwtGzwjZTeEyeDSnNlPU1MZ4t9/view?usp=sharing)
 
 ## Train
+* Sample training script is in a folder, experiment_scripts.
 * With only local alignment loss,
 ```
  CUDA_VISIBLE_DEVICES=$GPU_ID python trainval_net_local.py \
