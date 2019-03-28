@@ -49,7 +49,7 @@ Download them and write the path in __C.VGG_PATH and __C.RESNET_PATH at lib/mode
 #### sample model
 Global-local alignment model for watercolor dataset.
 
-* ResNet101 (adapted to water color) [GoogleDrive] (https://drive.google.com/file/d/1pzj2jKFwtGzwjZTeEyeDSnNlPU1MZ4t9/view?usp=sharing)
+* ResNet101 (adapted to water color) [GoogleDrive](https://drive.google.com/file/d/1pzj2jKFwtGzwjZTeEyeDSnNlPU1MZ4t9/view?usp=sharing)
 
 ## Train
 * With only local alignment loss,
