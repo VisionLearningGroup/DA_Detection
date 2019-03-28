@@ -52,7 +52,7 @@ Global-local alignment model for watercolor dataset.
 * ResNet101 (adapted to water color) [GoogleDrive](https://drive.google.com/file/d/1pzj2jKFwtGzwjZTeEyeDSnNlPU1MZ4t9/view?usp=sharing)
 
 ## Train
-* Sample training script is in a folder, experiment_scripts.
+* Sample training script is in a folder, train_scripts.
 * With only local alignment loss,
 ```
  CUDA_VISIBLE_DEVICES=$GPU_ID python trainval_net_local.py \
@@ -76,6 +76,7 @@ Add --gc when using context-vector based regularization loss.
 ```
 Add --lc and --gc when using context-vector based regularization loss.
 ## Test
+* Sample test script is in a folder, test_scripts.
 
 ```
  CUDA_VISIBLE_DEVICES=$GPU_ID python test_net_global_local.py \
