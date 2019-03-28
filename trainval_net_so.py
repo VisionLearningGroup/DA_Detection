@@ -8,11 +8,8 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
-import _init_paths
 import os
-import sys
 import numpy as np
-import argparse
 import pprint
 import pdb
 import time
@@ -20,10 +17,6 @@ import time
 import torch
 from torch.autograd import Variable
 import torch.nn as nn
-import torch.optim as optim
-
-import torchvision.transforms as transforms
-
 from roi_data_layer.roidb import combined_roidb
 from roi_data_layer.roibatchLoader import roibatchLoader
 from model.utils.config import cfg, cfg_from_file, cfg_from_list, get_output_dir
