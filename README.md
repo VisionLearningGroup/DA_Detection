@@ -1,4 +1,4 @@
-# A Pytorch Implementation of Strong-Weak Distribution Alignment for Adaptive Object Detection (CVPR 2019)
+# A Pytorch Implementation of [Strong-Weak Distribution Alignment for Adaptive Object Detection](https://arxiv.org/pdf/1812.04798.pdf) (CVPR 2019)
 
 <img src='./docs/swda.png' width=900/>
 
@@ -9,7 +9,7 @@ Many issues have been reported there to setup the environment.
 
 ### Data Preparation
 
-* **PASCAL_VOC 07+12**: Please follow the instructions in [py-faster-rcnn](https://github.com/rbgirshick/py-faster-rcnn#beyond-the-demo-installation-for-training-and-testing-models) to prepare VOC datasets. 
+* **PASCAL_VOC 07+12**: Please follow the instructions in [py-faster-rcnn](https://github.com/rbgirshick/py-faster-rcnn#beyond-the-demo-installation-for-training-and-testing-models) to prepare VOC datasets.
 * **Clipart, WaterColor**: Dataset preparation instruction link [Cross Domain Detection ](https://github.com/naoto0804/cross-domain-detection/tree/master/datasets). Images translated by Cyclegan are available in the website.
 * **Sim10k**: Website [Sim10k](https://fcav.engin.umich.edu/sim-dataset/)
 * **Cityscape-Translated Sim10k**: TBA
