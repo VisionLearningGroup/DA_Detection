@@ -60,12 +60,12 @@ class netD_dc(nn.Module):
         return x
 
 class vgg16(_fasterRCNN):
-  def __init__(self, classes, pretrained=False, class_agnostic=False,context=False):
+  def __init__(self, classes, pretrained=False, class_agnostic=False,gc=False):
     self.model_path = cfg.VGG_PATH
     self.dout_base_model = 512
     self.pretrained = pretrained
     self.class_agnostic = class_agnostic
-    self.context = context
+    self.gc = gc
 
     _fasterRCNN.__init__(self, classes, class_agnostic,self.context)
 
@@ -90,7 +90,7 @@ class vgg16(_fasterRCNN):
     # self.RCNN_base = _RCNN_base(vgg.features, self.classes, self.dout_base_model)
 
     self.RCNN_top = vgg.classifier
-    if self.context:
+    if self.gc:
         feat_d += 128
     self.RCNN_cls_score = nn.Linear(feat_d, self.n_classes)
     if self.class_agnostic:

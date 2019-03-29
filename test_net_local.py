@@ -12,6 +12,7 @@ import sys
 import numpy as np
 import pprint
 import time
+import _init_paths
 import torch
 from torch.autograd import Variable
 import pickle

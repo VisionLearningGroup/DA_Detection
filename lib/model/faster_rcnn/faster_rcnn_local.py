@@ -18,7 +18,7 @@ from model.utils.net_utils import _smooth_l1_loss, _crop_pool_layer, _affine_gri
 
 class _fasterRCNN(nn.Module):
     """ faster RCNN """
-    def __init__(self, classes, class_agnostic,lc,gc):
+    def __init__(self, classes, class_agnostic,lc):
         super(_fasterRCNN, self).__init__()
         self.classes = classes
         self.n_classes = len(classes)
@@ -27,7 +27,6 @@ class _fasterRCNN(nn.Module):
         self.RCNN_loss_cls = 0
         self.RCNN_loss_bbox = 0
         self.lc = lc
-        self.gc = gc
         # define rpn
         self.RCNN_rpn = _RPN(self.dout_base_model)
         self.RCNN_proposal_target = _ProposalTargetLayer(self.n_classes)

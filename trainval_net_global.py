@@ -13,6 +13,7 @@ import numpy as np
 import pprint
 import pdb
 import time
+import _init_paths
 
 import torch
 from torch.autograd import Variable
@@ -99,13 +100,13 @@ if __name__ == '__main__':
     # initilize the network here.
     from model.faster_rcnn.vgg16_global import vgg16
     from model.faster_rcnn.resnet_global import resnet
+
     if args.net == 'vgg16':
-        fasterRCNN = vgg16(imdb.classes, pretrained=True, class_agnostic=args.class_agnostic, context=args.gc)
+        fasterRCNN = vgg16(imdb.classes, pretrained=True, class_agnostic=args.class_agnostic, gc=args.gc)
     elif args.net == 'res101':
-        fasterRCNN = resnet(imdb.classes, 101, pretrained=True, class_agnostic=args.class_agnostic,
-                            context=args.gc)
+        fasterRCNN = resnet(imdb.classes, 101, pretrained=True, class_agnostic=args.class_agnostic, gc=args.gc)
     elif args.net == 'res50':
-        fasterRCNN = resnet(imdb.classes, 50, pretrained=True, class_agnostic=args.class_agnostic, context=args.gc)
+        fasterRCNN = resnet(imdb.classes, 50, pretrained=True, class_agnostic=args.class_agnostic, gc=args.gc)
 
     else:
         print("network is not defined")
@@ -196,9 +197,7 @@ if __name__ == '__main__':
             rois_label, out_d = fasterRCNN(im_data, im_info, gt_boxes, num_boxes, eta=eta)
             loss = rpn_loss_cls.mean() + rpn_loss_box.mean() \
                    + RCNN_loss_cls.mean() + RCNN_loss_bbox.mean()
-            ## domain label of the source domain
             domain_s = Variable(torch.zeros(out_d.size(0)).long().cuda())
-            ## domain loss
             dloss_s = 0.5 * FL(out_d, domain_s)
             loss_temp += loss.item()
             im_data.data.resize_(data_t[0].size()).copy_(data_t[0])
@@ -206,12 +205,11 @@ if __name__ == '__main__':
             gt_boxes.data.resize_(1, 1, 5).zero_()
             num_boxes.data.resize_(1).zero_()
             out_d = fasterRCNN(im_data, im_info, gt_boxes, num_boxes, target=True, eta=eta)
-            ## domain label of the target domain
             domain_t = Variable(torch.ones(out_d.size(0)).long().cuda())
-            ## domain loss
             dloss_t = 0.5 * FL(out_d, domain_t)
-            #if 'vgg' in args.net:
-            if args.dataset == 'sim10k':
+            # if 'vgg' in args.net:
+            if args.net == 'vgg16':
+            #if args.dataset == 'sim10k':
                 loss += (dloss_s + dloss_t) * args.eta
             else:
                 loss += (dloss_s + dloss_t)

@@ -13,6 +13,8 @@ import numpy as np
 import pprint
 import pdb
 import time
+import _init_paths
+
 
 import torch
 from torch.autograd import Variable
@@ -225,7 +227,7 @@ if __name__ == '__main__':
             # local alignment loss
             dloss_t_p = 0.5 * torch.mean((1 - out_d_pixel) ** 2)
 
-            if args.dataset == 'sim10k':
+            if args.net == 'vgg16':
                 loss += (dloss_s + dloss_t + dloss_s_p + dloss_t_p) * args.eta
             else:
                 loss += (dloss_s + dloss_t + dloss_s_p + dloss_t_p)

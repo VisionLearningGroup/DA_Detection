@@ -258,16 +258,16 @@ def resnet152(pretrained=False):
   return model
 
 class resnet(_fasterRCNN):
-  def __init__(self, classes, num_layers=101, pretrained=False, class_agnostic=False,context=False):
+  def __init__(self, classes, num_layers=101, pretrained=False, class_agnostic=False,gc=False):
     self.model_path = cfg.RESNET_PATH
     self.dout_base_model = 1024
     self.pretrained = pretrained
     self.class_agnostic = class_agnostic
-    self.context = context
+    self.gc = gc
     self.layers = num_layers
     # if self.layers == 50:
     #   self.model_path = '/home/grad3/keisaito/data/pretrained_model/resnet50_caffe.pth'
-    _fasterRCNN.__init__(self, classes, class_agnostic,context)
+    _fasterRCNN.__init__(self, classes, class_agnostic,gc)
 
   def _init_modules(self):
 
@@ -285,7 +285,7 @@ class resnet(_fasterRCNN):
     self.netD = netD(context=self.context)
     self.RCNN_top = nn.Sequential(resnet.layer4)
     feat_d = 2048
-    if self.context:
+    if self.gc:
       feat_d += 128
     self.RCNN_cls_score = nn.Linear(feat_d, self.n_classes)
     if self.class_agnostic:

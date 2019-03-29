@@ -106,7 +106,6 @@ class _fasterRCNN(nn.Module):
             feat_pixel = feat_pixel.view(1, -1).repeat(pooled_feat.size(0), 1)
             pooled_feat = torch.cat((feat_pixel, pooled_feat), 1)
         if self.gc:
-            #feat = torch.zeros(feat.size()).cuda()
             feat = feat.view(1, -1).repeat(pooled_feat.size(0), 1)
             pooled_feat = torch.cat((feat, pooled_feat), 1)
             # compute bbox offset
@@ -114,7 +113,6 @@ class _fasterRCNN(nn.Module):
         # compute bbox offset
         bbox_pred = self.RCNN_bbox_pred(pooled_feat)
         if self.training and not self.class_agnostic:
-            # select the corresponding columns according to roi labels
             bbox_pred_view = bbox_pred.view(bbox_pred.size(0), int(bbox_pred.size(1) / 4), 4)
             bbox_pred_select = torch.gather(bbox_pred_view, 1, rois_label.view(rois_label.size(0), 1, 1).expand(rois_label.size(0), 1, 4))
             bbox_pred = bbox_pred_select.squeeze(1)

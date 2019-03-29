@@ -95,9 +95,7 @@ class _fasterRCNN(nn.Module):
         # feed pooled features to top model
         pooled_feat = self._head_to_tail(pooled_feat)
         if self.context:
-            feat = torch.zeros(feat.size()).cuda()
             feat = feat.view(1, -1).repeat(pooled_feat.size(0), 1)
-            # compute bbox offset
             pooled_feat = torch.cat((feat, pooled_feat), 1)
         # compute bbox offset
         bbox_pred = self.RCNN_bbox_pred(pooled_feat)

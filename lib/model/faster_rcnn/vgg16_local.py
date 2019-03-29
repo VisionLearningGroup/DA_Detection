@@ -84,7 +84,7 @@ class netD_dc(nn.Module):
         return x
 
 class vgg16(_fasterRCNN):
-  def __init__(self, classes, pretrained=False, class_agnostic=False,lc=False,gc=False):
+  def __init__(self, classes, pretrained=False, class_agnostic=False,lc=False):
     self.model_path = cfg.VGG_PATH
     self.dout_base_model = 512
     self.pretrained = pretrained
@@ -92,7 +92,7 @@ class vgg16(_fasterRCNN):
     self.lc = lc
     self.gc = gc
 
-    _fasterRCNN.__init__(self, classes, class_agnostic,self.lc,self.gc)
+    _fasterRCNN.__init__(self, classes, class_agnostic,self.lc)
 
   def _init_modules(self):
     vgg = models.vgg16()
@@ -113,8 +113,8 @@ class vgg16(_fasterRCNN):
     feat_d = 4096
     if self.lc:
         feat_d += 128
-    if self.gc:
-        feat_d += 128
+    #if self.gc:
+    #    feat_d += 128
     # Fix the layers before conv3:
     for layer in range(10):
       for p in self.RCNN_base1[layer].parameters(): p.requires_grad = False

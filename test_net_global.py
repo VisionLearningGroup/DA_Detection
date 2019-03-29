@@ -13,6 +13,8 @@ import numpy as np
 import pprint
 import time
 import torch
+import _init_paths
+
 from torch.autograd import Variable
 import pickle
 from roi_data_layer.roidb import combined_roidb

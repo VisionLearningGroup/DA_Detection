@@ -11,6 +11,7 @@ import os
 import sys
 import numpy as np
 import argparse
+import _init_paths
 import pprint
 import time
 import cv2

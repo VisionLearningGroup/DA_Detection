@@ -13,6 +13,7 @@ import numpy as np
 import pprint
 import pdb
 import time
+import _init_paths
 
 import torch
 from torch.autograd import Variable
@@ -100,13 +101,10 @@ if __name__ == '__main__':
     from model.faster_rcnn.resnet_local import resnet
 
     if args.net == 'vgg16':
-        fasterRCNN = vgg16(imdb.classes, pretrained=True, class_agnostic=args.class_agnostic, lc=args.lc,
-                           gc=args.gc)
+        fasterRCNN = vgg16(imdb.classes, pretrained=True, class_agnostic=args.class_agnostic, lc=args.lc)
     elif args.net == 'res101':
         fasterRCNN = resnet(imdb.classes, 101, pretrained=True, class_agnostic=args.class_agnostic,
-                            lc=args.lc, gc=args.gc)
-    elif args.net == 'res50':
-        fasterRCNN = resnet(imdb.classes, 50, pretrained=True, class_agnostic=args.class_agnostic, context=args.context)
+                            lc=args.lc)
 
     else:
         print("network is not defined")
@@ -212,7 +210,8 @@ if __name__ == '__main__':
             out_d_pixel = fasterRCNN(im_data, im_info, gt_boxes, num_boxes, target=True)
             # backward
             dloss_t_p = torch.mean((1 - out_d_pixel) ** 2) * 0.5
-            if args.ef or args.dataset == 'sim10k':#or args.dataset == 'sim10k_cycle':
+            if args.net == 'vgg16':
+            #if args.ef or args.dataset == 'sim10k':#or args.dataset == 'sim10k_cycle':
                 loss += (dloss_s_p + dloss_t_p) * args.eta  # + 0.5*(diff_t + diff_s)
             else:
                 loss += (dloss_s_p + dloss_t_p)
