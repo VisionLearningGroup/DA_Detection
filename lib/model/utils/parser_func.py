@@ -232,6 +232,11 @@ def set_dataset_args(args, test=False):
             args.imdbval_name = "clipart_trainval"
             args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
                              '20']
+        elif args.dataset == "cityscape_car":
+            args.imdb_name = "cityscape_car_val"
+            args.imdbval_name = "cityscape_car_val"
+            args.set_cfgs = ['ANCHOR_SCALES', '[8, 16, 32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'MAX_NUM_GT_BOXES',
+                                    '20']
     args.cfg_file = "cfgs/{}_ls.yml".format(args.net) if args.large_scale else "cfgs/{}.yml".format(args.net)
 
     return args

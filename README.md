@@ -3,7 +3,7 @@
 <img src='./docs/swda.png' width=900/>
 
 ## Introduction
-Follow [original repository](https://github.com/jwyang/faster-rcnn.pytorch)
+Follow [faster-rcnn repository](https://github.com/jwyang/faster-rcnn.pytorch)
  to setup the environment. When installing pytorch-faster-rcnn, you may encounter some issues.
 Many issues have been reported there to setup the environment.
 

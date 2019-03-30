@@ -210,8 +210,10 @@ if __name__ == '__main__':
             out_d_pixel = fasterRCNN(im_data, im_info, gt_boxes, num_boxes, target=True)
             # backward
             dloss_t_p = torch.mean((1 - out_d_pixel) ** 2) * 0.5
-            if args.net == 'vgg16':
+            #if args.net == 'vgg16':
             #if args.ef or args.dataset == 'sim10k':#or args.dataset == 'sim10k_cycle':
+            if args.dataset == 'sim10k':#or args.dataset == 'sim10k_cycle':
+
                 loss += (dloss_s_p + dloss_t_p) * args.eta  # + 0.5*(diff_t + diff_s)
             else:
                 loss += (dloss_s_p + dloss_t_p)

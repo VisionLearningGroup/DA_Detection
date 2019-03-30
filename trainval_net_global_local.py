@@ -218,16 +218,12 @@ if __name__ == '__main__':
             gt_boxes.data.resize_(1, 1, 5).zero_()
             num_boxes.data.resize_(1).zero_()
             out_d_pixel, out_d = fasterRCNN(im_data, im_info, gt_boxes, num_boxes, target=True)
-
             # domain label
             domain_t = Variable(torch.ones(out_d.size(0)).long().cuda())
-            # domain_t_pixel = Variable(torch.ones(out_d_pixel.size(0)).long().cuda())
-            # global alignment loss
             dloss_t = 0.5 * FL(out_d, domain_t)
             # local alignment loss
             dloss_t_p = 0.5 * torch.mean((1 - out_d_pixel) ** 2)
-
-            if args.net == 'vgg16':
+            if args.dataset == 'sim10k':#or args.dataset == 'sim10k_cycle':
                 loss += (dloss_s + dloss_t + dloss_s_p + dloss_t_p) * args.eta
             else:
                 loss += (dloss_s + dloss_t + dloss_s_p + dloss_t_p)
