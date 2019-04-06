@@ -207,9 +207,7 @@ if __name__ == '__main__':
             out_d = fasterRCNN(im_data, im_info, gt_boxes, num_boxes, target=True, eta=eta)
             domain_t = Variable(torch.ones(out_d.size(0)).long().cuda())
             dloss_t = 0.5 * FL(out_d, domain_t)
-            # if 'vgg' in args.net:
-            if args.net == 'vgg16':
-            #if args.dataset == 'sim10k':
+            if args.dataset == 'sim10k':
                 loss += (dloss_s + dloss_t) * args.eta
             else:
                 loss += (dloss_s + dloss_t)

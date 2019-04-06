@@ -43,9 +43,6 @@ class netD_pixel(nn.Module):
                                padding=0, bias=False)
         self.conv3 = nn.Conv2d(128, 1, kernel_size=1, stride=1,
                                padding=0, bias=False)
-        #self.conv1 = conv1x1(512, 256)
-        #self.conv2 = conv1x1(256, 128)
-        #self.conv3 = conv1x1(128, 1)
         self.context = context
         self._init_weights()
     def _init_weights(self):
@@ -63,17 +60,15 @@ class netD_pixel(nn.Module):
       normal_init(self.conv2, 0, 0.01)
       normal_init(self.conv3, 0, 0.01)
     def forward(self, x):
-        #default no droopout
         x = F.relu(self.conv1(x))
         x = F.relu(self.conv2(x))
         if self.context:
           feat = F.avg_pool2d(x, (x.size(2), x.size(3)))
-          #feat = x
           x = self.conv3(x)
-          return F.sigmoid(x),feat#F.sigmoid(x),feat#torch.cat((feat1,feat2),1)#F
+          return F.sigmoid(x),feat
         else:
           x = self.conv3(x)
-          return F.sigmoid(x)#F.sigmoid(x)
+          return F.sigmoid(x)
 
 class netD(nn.Module):
     def __init__(self,context=False):
@@ -97,7 +92,7 @@ class netD(nn.Module):
           feat = x
         x = self.fc(x)
         if self.context:
-          return x,feat#torch.cat((feat1,feat2),1)#F
+          return x,feat
         else:
           return x
 class netD_dc(nn.Module):

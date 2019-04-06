@@ -223,7 +223,7 @@ if __name__ == '__main__':
             dloss_t = 0.5 * FL(out_d, domain_t)
             # local alignment loss
             dloss_t_p = 0.5 * torch.mean((1 - out_d_pixel) ** 2)
-            if args.dataset == 'sim10k':#or args.dataset == 'sim10k_cycle':
+            if args.dataset == 'sim10k':
                 loss += (dloss_s + dloss_t + dloss_s_p + dloss_t_p) * args.eta
             else:
                 loss += (dloss_s + dloss_t + dloss_s_p + dloss_t_p)

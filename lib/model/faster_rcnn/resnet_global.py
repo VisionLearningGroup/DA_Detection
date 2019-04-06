@@ -54,7 +54,7 @@ class netD(nn.Module):
           feat = x
         x = self.fc(x)
         if self.context:
-          return x,feat#torch.cat((feat1,feat2),1)#F
+          return x,feat
         else:
           return x
 class netD_dc(nn.Module):
