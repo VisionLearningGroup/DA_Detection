@@ -67,7 +67,7 @@ class vgg16(_fasterRCNN):
     self.class_agnostic = class_agnostic
     self.gc = gc
 
-    _fasterRCNN.__init__(self, classes, class_agnostic,self.context)
+    _fasterRCNN.__init__(self, classes, class_agnostic,self.gc)
 
   def _init_modules(self):
     vgg = models.vgg16()
